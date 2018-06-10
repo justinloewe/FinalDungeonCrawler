@@ -30,7 +30,7 @@ public class Shooting : MonoBehaviour {
 	void Update () {
 		if(playerHealth.health > 0)
 		{
-			if (Input.GetButtonDown ("Fire2"))
+			if (Input.GetButtonDown ("Fire3"))
 			{
 				if (inventory.RemoveItem(projectileInventoryItem))
 			   		Shoot();

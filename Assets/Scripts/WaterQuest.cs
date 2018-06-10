@@ -1,18 +1,20 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class WaterQuest : MonoBehaviour {
 
-	public int eps = 20;
+	public int eps = 10;
 	//public GameObject finalBucket;
 	public InventoryItem bucketInventoryItem;
 	//private GUIText messageText;	//GUIElement
 	private Text messageText;	//uGUI
-	private string questMessage = "Suche einen Behälter, " +
-		"um dieses Wasser zu trinken.";
+	private string questMessage = "Suche einen Behälter,\n" +
+		"um dieses saubere Wasser zu trinken.";
 	private string questMessage2 = "Du brauchst einen leeren Behälter.";
 	private bool gotQuest = false;
+	private bool endedQuest = false;
 	private string questEndedMessage = "<size=20>Gratulation!</size>\n" + 
 		"Du hast die Aufgabe gelöst.";
 	private GameObject player;
@@ -46,17 +48,18 @@ public class WaterQuest : MonoBehaviour {
 				//Quaternion rot = new Quaternion();
 				//Drehung des urspruenglichen Modells ausgleichen
 				//rot.eulerAngles = new Vector3(-90,0,0);
-				Instantiate(bucketInventoryItem.prefab,player.transform.position + player.transform.forward + player.transform.up,Quaternion.identity);
 
-				playerController.gameEnded = true;
 				messageText.text = questEndedMessage;
 				epController.AddPoints (eps);
+				endedQuest = true;
 			}
 			else
 			{
-				if(gotQuest)
+				if(endedQuest)
+					messageText.text = "";
+				if(gotQuest && !endedQuest)
 					messageText.text = questMessage2;
-				else
+				if(!gotQuest && !endedQuest)
 					messageText.text = questMessage;
 				gotQuest = true;
 			}

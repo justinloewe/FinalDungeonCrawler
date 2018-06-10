@@ -13,9 +13,9 @@ public class MainMenu : MonoBehaviour {
 
 		messageText = GameObject.FindGameObjectWithTag("Message").GetComponent<Text>();	//uGUI
 		messageText.text = "<size=20>Aufgemerkt, Spieler!</size>\n\n" +
-				"Du wurdest in ein Kellergewölbe verbannt.\n" + 
-			    "Monster und Rätsel warten dort auf Dich.\n" +
-			    "Besorge dir als erstes Wasser.";
+				"Du wurdest in ein finsteres Kellergewölbe verbannt.\n" + 
+			    "Monster und Rätsel warten hier unten auf Dich.\n" +
+			    "Löse 3 Aufgaben in diesem Raum, um freizukommen.";
 
 		//rect = new Rect(50,50,200,30);	//OnGUI/GUIElements
 	}

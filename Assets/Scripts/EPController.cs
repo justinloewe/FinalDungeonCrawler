@@ -5,8 +5,10 @@ using UnityEngine.UI;
 public class EPController : MonoBehaviour {
 
 	//public GUIText epText;	//GUIElement
-	public Text epText;			//uGUI
+	public Text epText;//uGUI
+	private Text messageText;
 	private int eps = 0;
+
 	void Start()
 	{	
 		UpdateView();

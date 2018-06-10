@@ -11,6 +11,9 @@ public class EnemyHealth : HealthController {
 	private int hitTrigger;
 	private int dieBool;
 	private AudioSource audioSource;
+
+	public GameObject[] items = new GameObject[1];
+
 	void Start()
 	{
 		enemySonar = GetComponent<EnemySonar>();
@@ -39,7 +42,17 @@ public class EnemyHealth : HealthController {
 		anim.SetBool(dieBool,true);
 		anim.SetTrigger(hitTrigger);
 		audioSource.Play ();
-		isShocked = true;	
+		isShocked = true;
+		Vector3 position = transform.position;
+		foreach (GameObject item in items)
+		{
+			if (item != null)
+			{
+
+				Instantiate(item, position, Quaternion.identity);
+			}
+
+		}
 		Invoke ("DestroyMe",1);
 	}
 
